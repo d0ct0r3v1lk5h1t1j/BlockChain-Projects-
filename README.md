@@ -4,6 +4,9 @@ Framework Used - Flask
 Pre- Requisites for running : 
 1. Flask and Python 3
 
+Instructions to run :
+execute main.py and click on the generated link on the terminal to access or go to http://127.0.0.1:5000/
+
 A web application for a basic Blockchain that stores the transacton data of the coffee shop inclduing the time of transation.
 The blockchain can only be modified by its owner who can add/edit transactions and also mine them.
 Transaction details consists of :
