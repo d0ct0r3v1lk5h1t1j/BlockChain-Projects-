@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial=scale=1.0">
+    <meta http-equiv="X=UA-Compatible" content="ie-edge">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Blockchain</title>
+</head>
+<body>
+
+    <div class = "container">
+        <div class="row">
+            <div class="col-6 mx-auto mt-5">
+                <h1 class="mb-5">Orders</h1>
+
+                <form action= "{{ url_for('index') }}" method="POST">
+                    <label for="borrower" class="form-label">Customer Name</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">Name</span>
+                        <input type="text" class="form-control" id="borrower" aria-describedby="basic-addon3"
+                            name="borrower"> 
+                
+                    </div>
+                    <label for="Lender" class="form-label">Order</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">Order</span>
+                        <input type="text" class="form-control" id="lender" aria-describedby="basic-addon3"
+                        name="lender">
+                    </div>
+                    <label for="amount" class="form-label">Amount</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">Rs.</span>
+                        <input type="text" class="form-control" id="amount" aria-describedby="basic-addon3"
+                        name="amount">
+                    </div>
+
+                    <button class="btn btn-primary">Submit</button>
+
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <form action="{{ url_for('check')}}">
+                    <button class="btn btn-outline-info">Check</button>
+                </form>
+
+                {% for res in checking_results %}
+                    <div>
+                        Block {{ res['block'] }} : {{res['result']}} : {{ res['timestamp'] }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-sm">
+                <form action="{{ url_for('mine')}}">
+                    <button class="btn btn-outline-info">Mine</button>
+                </form>
+                {% for res in transax %}
+                    <div>
+                        {{ res['borrower'] }} : {{ res['lender'] }} : {{res['amount']}} : {{res['transtime']}}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
