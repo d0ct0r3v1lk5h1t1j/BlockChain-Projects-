@@ -16,16 +16,16 @@ def get_hash(prev_block):  # function to get hash for previous block
 
 def check_integrity():  # function to check if any previous verified data was overwritten
     files = sorted(os.listdir(block_direc), key=lambda x: int(x))
-
     results = []
 
     for file in files[1:]:
         with open(block_direc + file) as f:
             block = json.load(f)
+            print(block)
 
-            prev_hash = block.get('prev_block').get('hash')
-            prev_filename = block.get('prev_block').get('filename')
-            timest = block.get('timestamp')
+            prev_hash = block['prev_block']['hash']
+            prev_filename = block['prev_block']['filename']
+            timest = block['timestamp']
             actual_hash = get_hash(prev_filename)
             if prev_hash == actual_hash:  # comparing hash value of current block with the hash value stored in next block
                 res = 'OK'
