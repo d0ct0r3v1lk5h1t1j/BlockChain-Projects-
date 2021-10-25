@@ -60,11 +60,13 @@
                 <form action="{{ url_for('mine')}}">
                     <button class="btn btn-outline-info">Mine</button>
                 </form>
-                {% for res in transax %}
+                {% if transax %}
+                {% for res in transax.data %}
                     <div>
                         {{ res['borrower'] }} : {{ res['lender'] }} : {{res['amount']}} : {{res['transtime']}}
                     </div>
                 {% endfor %}
+            {% endif %}
             </div>
         </div>
     </div>
